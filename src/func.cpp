@@ -50,7 +50,7 @@ std::string double2string(const double val, const std::size_t fieldLength,
                           const bool decimalPointAssumed,
                           const bool leftAlign)
 {
-    char str[fieldLength];
+    char str[fieldLength + 1000];
     double val1 = val;
     if (decimalPointAssumed)
     {
