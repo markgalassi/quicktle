@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.26)
 
 project(quicktle)
 set(VERSION "2.0.1")
