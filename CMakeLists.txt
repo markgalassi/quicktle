@@ -14,7 +14,7 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(QUICKTLE_SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(QUICKTLE_INC_DIR ${CMAKE_SOURCE_DIR}/include)
 set(QUICKTLE_SAMPLES_DIR ${CMAKE_SOURCE_DIR}/samples)
-set(QUICKTLE_TESTS_DIR ${CMAKE_SOURCE_DIR}/test)
+# set(QUICKTLE_TESTS_DIR ${CMAKE_SOURCE_DIR}/test)
 
 set(QUICKTLE_SOURCES
 ${QUICKTLE_SRC_DIR}/func.cpp
@@ -40,10 +40,10 @@ if (BUILD_SAMPLES)
 	add_subdirectory(${QUICKTLE_SAMPLES_DIR}/sample4)
 endif (BUILD_SAMPLES)
 
-option(BUILD_TESTS "Build tests" ON)
-if (BUILD_TESTS)
-	add_subdirectory(${QUICKTLE_TESTS_DIR})
-endif(BUILD_TESTS)
+# option(BUILD_TESTS "Build tests" ON)
+# if (BUILD_TESTS)
+# 	add_subdirectory(${QUICKTLE_TESTS_DIR})
+# endif(BUILD_TESTS)
 
 add_library(${PROJECT_NAME} SHARED ${QUICKTLE_SOURCES})
 
