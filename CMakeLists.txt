@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 
 project(quicktle)
-set(VERSION "2.0.1")
+set(VERSION "2.0.2")
 
 if (UNIX)
 set(CMAKE_INSTALL_PREFIX "/usr")

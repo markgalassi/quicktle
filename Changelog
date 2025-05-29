@@ -1,3 +1,10 @@
+Version 2.0.2
+* Require version >= 3.26 of cmake
+
+Version 2.0.1
+* Minor documentation changes
+* Fix an array length to avoid memory errors
+
 Version 2.0.0
 * TLELib has been renamed to QuickTle.
 * quicktle::DataSet class has been added.
