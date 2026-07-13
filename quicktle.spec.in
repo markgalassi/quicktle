@@ -1,0 +1,52 @@
+%global debug_package %{nil}
+
+Name:           quicktle
+Version:        2.0.4
+%define dateNoDashes %(date +"%Y%m%d")
+Release: %{dateNoDashes}%{?dist}
+Summary:        Operations library for TLE (two line elements -- orbital mechanics) data sets.
+Group:          Scientific
+Obsoletes:      tlelib
+Provides:       quicktle
+Conflicts:      tlelib
+
+License:        LGPLv3
+URL:            https://github.com/fundaev/quicktle
+# NOTE: the Source0 was prepared with
+# git archive --format=tar.gz -o quicktle-2.0.0.tar.gz --prefix=quicktle-2.0.0/ master
+Source0:        quicktle-2.0.4.tar.gz
+
+BuildRequires: cmake
+BuildRequires: gcc-c++
+BuildRequires: gtest-devel
+#Requires:       
+
+%description
+QuickTle library is created to be useful and fast tool for the following operations with TLE data sets:
+
+* IO-operations with 2- and 3-lines TLE-files
+* storing TLE data set
+* searching for the nearest data to the given date and time
+* converting TLE data to geocentric coordinates
+
+
+%prep
+%setup -q
+
+
+%build
+cmake . .
+make
+
+%install
+%make_install DESTDIR=$RPM_BUILD_ROOT
+
+
+%files
+/usr/include/*
+/usr/lib*/*
+%doc README.md COPYING 
+
+
+
+%changelog

@@ -1,7 +1,35 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(quicktle)
-set(VERSION "2.0.3")
+project(quicktle VERSION 2.0.4)
+set(PACKAGE_NAME "quicktle")
+#set(PACKAGE_VERSION "2.0.4")
+
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/quicktle.spec.in"
+  "quicktle.spec"
+)
+
+
+set(CPACK_PROJECT_CONFIG_FILE CPackSourceConfig.cmake)
+if (CPACK_GENERATOR MATCHES "TGZ")
+
+    set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
+
+    set(CPACK_COMPONENT_HDR_GROUP "src")
+    set(CPACK_COMPONENT_SRC_GROUP "src")
+endif ()
+set(CPACK_SOURCE_GENERATOR "TGZ")
+set(CPACK_PACKAGE_VERSION_MAJOR 2)
+set(CPACK_PACKAGE_VERSION_MINOR 0)
+set(CPACK_PACKAGE_VERSION_PATCH 4)
+set(CPACK_PACKAGE_NAME "quicktle")
+set(CPACK_SOURCE_IGNORE_FILES
+    "/build/"
+    "/_cbuild/"
+    "/\\\\.git/"
+)
+include(CPack)
+
 
 if (UNIX)
 set(CMAKE_INSTALL_PREFIX "/usr")
@@ -50,10 +78,3 @@ add_library(${PROJECT_NAME} SHARED ${QUICKTLE_SOURCES})
 install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib COMPONENT bin)
 install(FILES ${QUICKTLE_HEADERS} DESTINATION include/quicktle COMPONENT hdr)
 #install(FILES ${QUICKTLE_SOURCES} DESTINATION src/quicktle COMPONENT src)
-
-set(CPACK_GENERATOR "TGZ;DEB;RPM")
-set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/CPackConfig.cmake)
-set(CPACK_PACKAGE_VERSION ${VERSION})
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Provides C++ library for operations with TLE-files")
-set(CPACK_PACKAGE_FILE_NAME ${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION})
-include(CPack)

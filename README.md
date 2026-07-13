@@ -1,6 +1,6 @@
 # QuickTle
 
-**Version 2.0.0**
+**Version 2.0.4**
 
 ## 1 Summary
 
@@ -12,17 +12,27 @@ QuickTle library is created to be useful and fast tool for the following operati
 * converting TLE data to geocentric coordinates
 
 
-## 2 Installation
+## 2 Installation and making a tarball
 
-To build and install QuickTle [cmake](http://www.cmake.org/) build system is used. Make sure that cmake v2.8 or later is installed create, unpack some temporary directory and type ```make``` and ```make install```:
+To build and install QuickTle [cmake](http://www.cmake.org/) build
+system is used. Make sure that cmake v2.8 or later is installed
+create, unpack some temporary directory and type ```make``` and
+```make install```:
 
-    tar -xzvf quicktle-2.0.0-src.tar.gz
-    cd quicktle-2.0.0
-    mkdir build
-    cd build
-    make
-    sudo make install
-    
+    tar -xzvf quicktle-2.0.4-src.tar.gz
+    cd quicktle-2.0.4
+    mkdir _cbuild
+    cd _cbuild
+    cmake ..
+    make install
+
+To make a tarball:
+
+    rm -rf _cbuild
+    mkdir _cbuild
+    cd _cbuild
+    cmake -S .. -B . --install-prefix=$DIO_LOCAL_PREFIX
+    cpack .. -G TGZ
 
 ## 3 Quick start
 
